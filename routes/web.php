@@ -23,7 +23,18 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/home', 'HomeController@index')->name('home');
 
   Route::get('/profile/{slug}', 'ProfileController@index');
+  Route::get('/profile/changeimage', function(){
+    return view('profile.changeimage');
+  });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

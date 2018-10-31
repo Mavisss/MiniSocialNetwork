@@ -1,0 +1,19 @@
+div.profile-pic {
+    position: relative;
+
+    margin: 0, 20%;
+    display: block;
+}
+div.profile-pic:hover img{
+    opacity:0.5;
+}
+div.profile-pic:hover button {
+  display: block;
+  margin: 0, auto;
+}
+div.profile-pic button {
+    position:absolute;
+    display:none;
+    bottom:0;
+    margin: 0, auto;
+}
