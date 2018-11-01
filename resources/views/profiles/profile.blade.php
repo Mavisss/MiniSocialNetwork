@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{Auth::user()->name}}</div>
+                <div class="card-header">
+                  <h4 style="float: left;">Your Profile</h4>
+                  <a href="/profiles/edit/{{ Auth::user()->slug }}" style="float: right;" class="btn btn-info">Edit your profile</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,8 +19,8 @@
 
                     <div class="text-center">
                       <div class="profile-pic">
-                          <img src="{{asset('/img/ava1.png')}}" alt height="145px" width="145px">
-                          <a href="{{url('profile/changeimage')}}">
+                          <img src="{{asset('/img/male.png')}}" alt height="145px" width="145px">
+                          <a href="">
                             <button class="button" name="button" type="submit">Change Image</button>
                           </a>
                       </div>

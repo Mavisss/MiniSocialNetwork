@@ -22,20 +22,15 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/home', 'HomeController@index')->name('home');
 
-  Route::get('/profile/{slug}', 'ProfileController@index');
-  Route::get('/profile/changeimage', function(){
-    return view('profile.changeimage');
-  });
+  Route::get('/profiles/{slug}', 'ProfileController@viewProfile');
+
+  Route::get('/profiles/edit/{slug}', [
+    'uses' => 'ProfileController@editProfile',
+    'as' => 'profile.edit'
+  ]);
+
+  Route::post('/profiles/update', [
+    'uses' => 'ProfileController@updateProfile',
+    'as' => 'profile.update'
+  ]);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
