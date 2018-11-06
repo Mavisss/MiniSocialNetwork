@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('add', function(){
+  return \App\User::first()->add_friend(2);
+});
+
+Route::get('accept', function(){
+  return \App\User::find(2)->accept_friend(1);
+});
+
 Auth::routes(['verify' => true]);
 
 
@@ -32,5 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/profiles/update', [
     'uses' => 'ProfileController@updateProfile',
     'as' => 'profile.update'
+  ]);
+
+  Route::post('/home/post',[
+    'uses' => 'PostController@store',
+    'as' => 'post.store'
   ]);
 });

@@ -25,7 +25,8 @@
                           </a>
                       </div>
                       <h4>{{Auth::user()->name}}</h4>
-                      <p>{{Auth::user()->role}}</p>
+                      <!-- <p>{{Auth::user()->find(Auth::user()->id)->profile->role}}</p> -->
+                      <p>{{$profile->role}}</p>
                     </div>
 
 

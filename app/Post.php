@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
+    protected $table = "posts";
+    protected $fillable = ["content", "status", "name"];
     public function likes(){
       return $this->hasMany("App\Like");
     }

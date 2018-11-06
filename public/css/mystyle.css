@@ -17,3 +17,9 @@ div.profile-pic button {
     bottom:0;
     margin: 0, auto;
 }
+
+img {
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
