@@ -24,7 +24,7 @@
                             <button class="button" name="button" type="submit">Change Image</button>
                           </a>
                       </div>
-                      <h4>{{Auth::user()->name}}</h4>
+                      <h4>{{$user->name}}</h4>
                       <!-- <p>{{Auth::user()->find(Auth::user()->id)->profile->role}}</p> -->
                       <p>{{$profile->role}}</p>
                     </div>

@@ -15,22 +15,60 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('add', function(){
-  return \App\User::first()->add_friend(2);
-});
-
-Route::get('accept', function(){
-  return \App\User::find(2)->accept_friend(1);
-});
 
 Auth::routes(['verify' => true]);
+Route::get('/profiles/{slug}', 'ProfileController@viewProfile');
 
 
 
 Route::group(['middleware' => 'auth'], function () {
+  // FRIENDS FUNCTION
+  Route::get('add', function(){
+    return \App\User::find(12)->add_friend(13);
+  });
+
+  Route::get('accept', function(){
+    return \App\User::find(13)->accept_friend(12);
+  });
+
+  Route::get('/friends', function(){
+    return \App\User::find(11)->friends();
+  });
+
+  Route::get('/pending-request', function(){
+    return \App\User::find(13)->pending_friend_requests();
+  });
+
+  Route::get('/ids', function(){
+    return \App\User::find(13)->friends_ids();
+  });
+
+  Route::get('/is-friends-with', function(){
+    return \App\User::find(11)->is_friends_with(12);
+  });
+
+  Route::get('/pending-friend-requests-sent', function(){
+    return \App\User::find(11)->pending_friend_requests_sent();
+  });
+
+  Route::get('/pending-friend-requests-sent-ids', function(){
+    return \App\User::find(11)->pending_friend_requests_sent_ids();
+  });
+
+  Route::get('/has-pending-friend-requests-from', function(){
+    return \App\User::find(13)->has_pending_friend_requests_from(11);
+  });
+
+  Route::get('/has-pending-friend-requests-sent-to', function(){
+    return \App\User::find(11)->has_pending_friend_requests_sent_to(13);
+  });
+
+  //OTHER FUNCTIONS
+  Route::get('/', 'HomeController@index2')->name('home');
+
   Route::get('/home', 'HomeController@index')->name('home');
 
-  Route::get('/profiles/{slug}', 'ProfileController@viewProfile');
+  Route::get('/home/delete/{postId}', 'PostController@delete');
 
   Route::get('/profiles/edit/{slug}', [
     'uses' => 'ProfileController@editProfile',

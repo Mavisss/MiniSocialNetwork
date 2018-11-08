@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
-        // dd($posts);
+        $posts = Post::latest()->where('user_id', Auth::user()->id)->get();
         return view('home', ['posts' => $posts]);
+    }
+    public function index2()
+    {
+        $allposts = Post::latest()->get();
+        // dd($allposts);
+        return view('welcome', [
+          'allposts' => $allposts,
+        ]);
     }
 }

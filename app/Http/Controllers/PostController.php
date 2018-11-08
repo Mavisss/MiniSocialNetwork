@@ -13,22 +13,32 @@ class PostController extends Controller
     public function __construct(){
       $this->middleware("auth");
     }
-     public function store(Request $r){
-       $validate = Validator::make($r->all(), [
+    // Create a post
+    public function store(Request $request){
+       $validate = Validator::make($request->all(), [
          'content' => 'required',
        ]);
        if($validate->fails()){
           return redirect()->back()->with("errors", $validate->messages()->all());
        }
-       if ($r->content != '<p>&nbsp;</p>' ){
+       if ($request->content != '<p>&nbsp;</p>' ){
          $post = Auth::user()->posts()->create([
            'name' => Auth::user()->name,
-           'content' => $r->content,
+           'slug' => Auth::user()->slug,
+           'content' => $request->content,
            'status' => 1
          ]);
+
+         $viewPost= Auth::user()->find(Auth::user()->id)->posts;
            return redirect()->back()->with("success", "Post completed!");
         }else{
             return redirect()->back()->with("errors", "Failed to post! Please type in something!");
          }
+    }
+
+
+    // Delete a post
+    public function delete($postId){
+
     }
 }

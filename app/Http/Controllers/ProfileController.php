@@ -11,8 +11,7 @@ class ProfileController extends Controller
     //
     public function viewProfile($slug){
       $user = User::where('slug', $slug)->first();
-      $profile = Auth::user()->find(Auth::user()->id)->profile;
-      // dd($profile);
+      $profile = $user->profile;
       return view('profiles.profile')->with([
         'user'=> $user,
         'profile' => $profile
