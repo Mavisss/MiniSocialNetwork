@@ -20,6 +20,8 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "imagemin": "^6.0.0",
+        "vue-resource": "^1.5.1",
         "vue-router": "^3.0.1"
     }
 }

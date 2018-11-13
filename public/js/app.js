@@ -13905,7 +13905,7 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('friend', __webpack_require__(48));
+Vue.component('friend', __webpack_require__(39));
 
 window.onload = function () {
   var app = new Vue({
@@ -47185,7 +47185,53 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 39 */,
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(41)
+/* template */
+var __vue_template__ = __webpack_require__(42)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Friend.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-11cb39c9", Component.options)
+  } else {
+    hotAPI.reload("data-v-11cb39c9", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
@@ -47295,66 +47341,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(40)
-/* script */
-var __vue_script__ = __webpack_require__(49)
-/* template */
-var __vue_template__ = __webpack_require__(50)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/Friend.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-11cb39c9", Component.options)
-  } else {
-    hotAPI.reload("data-v-11cb39c9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 49 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47365,31 +47352,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+      console.log(response);
+      _this.status = response.body.status;
+      _this.loading = false;
+    });
+  },
+
+  props: ['profile_user_id'],
+  data: function data() {
+    return {
+      status: '',
+      loading: true
+    };
+  }
 });
 
 /***/ }),
-/* 50 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm.loading
+        ? _c("p", { staticClass: "text-center" }, [
+            _vm._v("\n      Loading..\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.loading
+        ? _c("div", { staticClass: "text-center" }, [
+            _vm.status == 0
+              ? _c("button", { staticClass: "btn btn-success" }, [
+                  _vm._v("Add Friend")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.status == "pending"
+              ? _c("button", { staticClass: "btn btn-success" }, [
+                  _vm._v("Accept Friend")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.status == "friend"
+              ? _c("button", { staticClass: "btn btn-success" }, [
+                  _vm._v("Friend")
+                ])
+              : _vm._e()
+          ])
+        : _vm._e()
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "abc" }, [_c("h1", [_vm._v("Yeahhhh")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47398,6 +47432,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-11cb39c9", module.exports)
   }
 }
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

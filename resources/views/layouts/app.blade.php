@@ -10,9 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
-    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script> -->
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=lt4hs1j5octreut3946kr2zrr6g1q6tadfsvm28b7cv6gp84"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+    <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=lt4hs1j5octreut3946kr2zrr6g1q6tadfsvm28b7cv6gp84"></script> -->
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
 
@@ -87,15 +88,12 @@
             </div>
         </nav>
 
-        <main class="py-4" id="app">
+        <main class="py-4">
             @yield('content')
-
         </main>
 
-
-
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
 </html>

@@ -8,7 +8,7 @@ class Post extends Model
 {
     //
     protected $table = "posts";
-    protected $fillable = ["content", "status", "name"];
+    protected $fillable = ["content", "status", "name", "slug"];
     public function likes(){
       return $this->hasMany("App\Like");
     }

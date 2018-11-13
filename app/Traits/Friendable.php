@@ -105,7 +105,7 @@ trait Friendable{
 
 
 
-  //Get and array of people who you requested to be friend with them
+  //Get an array of people who you requested to be friend with them
   public function pending_friend_requests_sent(){
     $users = array();
 
