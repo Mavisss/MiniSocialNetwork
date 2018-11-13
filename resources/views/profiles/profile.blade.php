@@ -20,20 +20,20 @@
                     <div class="text-center">
                       <div class="profile-pic">
                           <img src="{{asset('/img/male.png')}}" alt height="145px" width="145px">
-                          <a href="">
+                          <a>
                             <button class="button" name="button" type="submit">Change Image</button>
                           </a>
                       </div>
-                      <h4>{{$user->name}}</h4>
-                      <!-- <p>{{Auth::user()->find(Auth::user()->id)->profile->role}}</p> -->
-                      <p>{{$profile->role}}</p>
+                      <div class="">
+                        <h4>{{$user->name}}</h4>
+                        <p>{{$profile->role}}</p>
+                      </div>
                     </div>
-
-
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+<friend></friend>
 @endsection

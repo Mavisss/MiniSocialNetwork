@@ -31,13 +31,14 @@
                         @endif
 
                         <textarea name="content" id="enter-post"></textarea>
-                        <script>
+                        <script>tinymce.init({ selector:'#enter-post' });</script>
+                        <!-- <script>
                             ClassicEditor
                                 .create( document.querySelector( '#enter-post' ) )
                                 .catch( error => {
                                     console.error( error );
                                 } );
-                        </script>
+                        </script> -->
 
 
                         <div class="text-right" style="margin-top: 10px;">

@@ -20,7 +20,6 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "animate.css": "^3.7.0",
-        "froala-editor": "^2.9.0"
+        "vue-router": "^3.0.1"
     }
 }
