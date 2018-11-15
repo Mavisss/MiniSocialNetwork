@@ -14016,10 +14016,20 @@ window.Vue = __webpack_require__(40);
 
 Vue.component('friend', __webpack_require__(43));
 Vue.component('notification', __webpack_require__(46));
+Vue.component('post', __webpack_require__(54));
+
+Vue.use(CKEditor);
 
 window.onload = function () {
     var app = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            editor: ClassicEditor,
+            editorData: '<p>Content of the editor.</p>',
+            editorConfig: {
+                // The configuration of the editor.
+            }
+        }
     });
 };
 
@@ -14138,10 +14148,14 @@ window.Pusher = __webpack_require__(39);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'pusher',
-    key: "ce49feb31e15d7ccaa41",
-    cluster: "ap1",
+    key: 'fa85d1b7f6a16378931e',
+    cluster: 'ap1',
     encrypted: true
 });
+
+Pusher.log = function (message) {
+    window.console.log(message);
+};
 
 /***/ }),
 /* 15 */
@@ -60345,9 +60359,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
+    axios.get('/check_relationship_status/' + this.profile_user_id).then(function (response) {
       console.log(response);
-      _this.status = response.body.status;
+      _this.status = response.data.status;
       _this.loading = false;
     });
   },
@@ -60365,34 +60379,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.loading = true;
-      this.$http.get('/add_friend/' + this.profile_user_id).then(function (response) {
+      axios.get('/add_friend/' + this.profile_user_id).then(function (response) {
         console.log(response);
-        if (response.body == 1) {
-          _this2.status = 'waiting';
-          new Noty({
-            type: 'success',
-            layout: 'center',
-            text: 'Friend Request Sent'
-          }).show();
-          _this2.loading = false;
-        }
+        console.log(response.data);
+        if (response.data == 1) _this2.status = 'waiting';
+        new Noty({
+          type: 'success',
+          layout: 'center',
+          text: 'Friend Request Sent'
+        }).show();
+        _this2.loading = false;
       });
     },
     accept_friend: function accept_friend() {
       var _this3 = this;
 
       this.loading = true;
-      this.$http.get('/accept_friend/' + this.profile_user_id).then(function (response) {
+      axios.get('/accept_friend/' + this.profile_user_id).then(function (response) {
         console.log(response);
-        if (response.body == 1) {
-          _this3.status = 'friend';
-          new Noty({
-            type: 'success',
-            layout: 'center',
-            text: 'You guys are now friends'
-          }).show();
-          _this3.loading = false;
-        }
+        if (response.data == 1) _this3.status = 'friend';
+        new Noty({
+          type: 'success',
+          layout: 'center',
+          text: 'You guys are now friends'
+        }).show();
+        _this3.loading = false;
       });
     }
   }
@@ -60533,7 +60544,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     listen: function listen() {
       Echo.private('App.User.' + this.id).notification(function (notification) {
-        alert('new notification');
+        new Noty({
+          type: 'success',
+          layout: 'topLeft',
+          text: 'Someone sent you friend request'
+        }).show();
         console.log(notification);
       });
     }
@@ -60565,6 +60580,91 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Post.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5e8280ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-5e8280ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5e8280ea", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -1,7 +1,7 @@
 <template>
-  <div>
+      <div>
 
-  </div>
+      </div>
 </template>
 
 <script>
@@ -14,7 +14,11 @@
       listen(){
         Echo.private('App.User.' + this.id)
             .notification( (notification) => {
-              alert('new notification')
+               new Noty({
+                type: 'success',
+                layout: 'topLeft',
+                text: 'Someone sent you friend request'
+              }).show()
               console.log(notification)
             })
       }

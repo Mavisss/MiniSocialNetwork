@@ -10,9 +10,9 @@
         <title>Mini Social Network</title>
         <!-- Script -->
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script> -->
 
-        <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+        <script src="{{asset('js/ckeditor5/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+        <script src="{{asset('js/ckeditor5/ckeditor5-vue/dist/ckeditor.js')}}"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">

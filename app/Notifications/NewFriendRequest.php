@@ -16,7 +16,7 @@ class NewFriendRequest extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
         $this->user = $user;
     }
@@ -56,7 +56,7 @@ class NewFriendRequest extends Notification
     {
         return [
             'name' => $this->user->name,
-            'message' => $this->user->name. 'sent you a friend request!'
+            'message' => $this->user->name. ' sent you a friend request!'
         ];
     }
 }

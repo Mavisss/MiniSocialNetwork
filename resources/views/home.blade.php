@@ -27,8 +27,8 @@
                                   <strong>{{ $message }}</strong>
                           </div>
                         @endif
-
-                        <textarea name="content" id="enter-post"></textarea>
+                        <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+                        <!-- <textarea name="content" id="enter-post"></textarea> -->
                         <!-- <script>tinymce.init({ selector:'#enter-post' });</script> -->
 
 

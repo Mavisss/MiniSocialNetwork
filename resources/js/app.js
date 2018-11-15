@@ -17,10 +17,20 @@ window.Vue = require('vue');
 
 Vue.component('friend', require('./components/Friend.vue'));
 Vue.component('notification', require('./components/Notification.vue'));
+Vue.component('post', require('./components/Post.vue'));
+
+Vue.use( CKEditor );
 
 window.onload = function(){
   const app = new Vue({
-      el: '#app'
+      el: '#app',
+      data: {
+        editor: ClassicEditor,
+        editorData: '<p>Content of the editor.</p>',
+        editorConfig: {
+            // The configuration of the editor.
+        }
+    }
   });
 }
 
@@ -86,4 +96,3 @@ $(document).ready(function() {
  }, false);
 
  //CKEDITOR5 Script
- 

@@ -11,12 +11,15 @@
 
     <!-- Scripts -->
     <!-- <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script> -->
+    <script src="{{asset('js/ckeditor5/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+    <script src="{{asset('js/ckeditor5/ckeditor5-vue/dist/ckeditor.js')}}"></script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
 
 
     <!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script> -->
 
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script> -->
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -84,6 +87,7 @@
                                         @csrf
                                     </form>
                                 </div>
+                                   <notification :id="{{ Auth::id() }}"></notification>
                             </li>
 
                         @endguest
@@ -95,20 +99,13 @@
         <main class="py-4">
             @yield('content')
             <div>
-              <notification :id="{{ Auth::id() }}"></notification>
             </div>
         </main>
+
 
     </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript">
-ClassicEditor
-    .create( document.querySelector( '#enter-post' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 
 </body>

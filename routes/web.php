@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 
 Auth::routes(['verify' => true]);
-Route::get('/profiles/{slug}', 'ProfileController@viewProfile');
+Route::get('/profiles/{slug}', [
+   'uses' => 'ProfileController@viewProfile',
+   'as' => 'profile'
+   ]);
 
 // FRIENDS FUNCTION
 Route::get('add', function(){
