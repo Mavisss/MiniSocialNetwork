@@ -36,40 +36,7 @@
             <strong><i class="far fa-comment-alt"></i>&nbspComment</strong>
           </span>
         </div>
-        <textarea class="form-control" rows="1" ></textarea>
-       <!-- Script to make the textarea autoresize -->
-        <script type="text/javascript">
-        var autoExpand = function (field) {
-
-        	// Reset field height
-        	field.style.height = 'inherit';
-
-        	// Get the computed styles for the element
-        	var computed = window.getComputedStyle(field);
-
-        	// Calculate the height
-        	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-        	             + parseInt(computed.getPropertyValue('padding-top'), 10)
-        	             + field.scrollHeight
-        	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-        	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-        	field.style.height = height + 'px';
-
-        };
-
-        document.addEventListener('input', function (event) {
-        	if (event.target.tagName.toLowerCase() !== 'textarea') return;
-        	autoExpand(event.target);
-        }, false);
-        </script>
-        <style media="screen">
-        textarea {
-          min-height: 1em;
-          max-height: 50vh;
-          width: 100%;
-        }
-        </style>
+        <textarea id="homePostCommentTxt" class="form-control" rows="1" ></textarea>
       </div>
     </div>
   </div>

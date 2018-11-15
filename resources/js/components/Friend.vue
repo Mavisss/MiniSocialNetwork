@@ -4,11 +4,12 @@
         <p class="text-center" v-if="loading">
           Loading..
         </p>
-        <div class="text-center" v-if="!loading">
-          <button class="btn btn-success" v-if="status == 0">Add Friend</button>
-          <button class="btn btn-success" v-if="status == 'pending'">Accept Friend</button>
+        <p class="text-center" v-if="!loading">
+          <button class="btn btn-success" v-if="status == 0" v-on:click="add_friend">Add Friend</button>
+          <button class="btn btn-success" v-if="status == 'pending'" v-on:click="accept_friend">Accept Friend</button>
           <button class="btn btn-success" v-if="status == 'friend'">Friend</button>
-        </div>
+          <button class="btn btn-primary" v-if="status == 'waiting'">Friend Request Sent</button>
+        </p>
 
       </div>
     </div>
@@ -29,6 +30,42 @@
           return {
             status: '',
             loading: true
+          }
+        },
+        methods: {
+          add_friend(){
+            this.loading = true
+            this.$http.get('/add_friend/' + this.profile_user_id)
+            .then((response)=>{
+              console.log(response)
+              if (response.body == 1){
+                this.status = 'waiting'
+                new Noty({
+                  type: 'success',
+                  layout: 'center',
+                  text: 'Friend Request Sent'
+                }).show()
+                this.loading=  false
+
+              }
+            })
+          },
+
+          accept_friend(){
+            this.loading = true
+            this.$http.get('/accept_friend/'+ this.profile_user_id)
+            .then((response) => {
+              console.log(response)
+              if(response.body == 1){
+                this.status = 'friend'
+                new Noty({
+                  type: 'success',
+                  layout: 'center',
+                  text: 'You guys are now friends'
+                }).show()
+                this.loading = false
+              }
+            })
           }
         }
     }

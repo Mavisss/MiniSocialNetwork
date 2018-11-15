@@ -24,7 +24,7 @@
                             <button class="button" name="button" type="submit">Change Image</button>
                           </a>
                       </div>
-                      <div id="app">
+                      <div>
                         <h4>{{$user->name}}</h4>
                         <p>{{$profile->role}}</p>
                         <friend :profile_user_id="{{ $user->id }}"></friend>

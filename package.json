@@ -21,6 +21,9 @@
     },
     "dependencies": {
         "imagemin": "^6.0.0",
+        "laravel-echo": "^1.4.1",
+        "noty": "^3.2.0-beta",
+        "pusher-js": "^4.3.1",
         "vue-resource": "^1.5.1",
         "vue-router": "^3.0.1"
     }

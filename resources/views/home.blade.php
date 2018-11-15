@@ -16,8 +16,6 @@
 
                     <form action="{{route('post.store')}}" enctype="multipart/form-data" method="post">
                       @csrf
-                        <!-- <textarea name="content" id="enter-post" rows="8"></textarea> -->
-
                         @if ($message = Session::get('success'))
                           <div class="alert alert-success alert-block alert-dismissible">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -32,13 +30,6 @@
 
                         <textarea name="content" id="enter-post"></textarea>
                         <!-- <script>tinymce.init({ selector:'#enter-post' });</script> -->
-                        <script>
-                            ClassicEditor
-                                .create( document.querySelector( '#enter-post' ) )
-                                .catch( error => {
-                                    console.error( error );
-                                } );
-                        </script>
 
 
                         <div class="text-right" style="margin-top: 10px;">

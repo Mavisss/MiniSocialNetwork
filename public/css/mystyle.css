@@ -23,3 +23,8 @@ img {
   -moz-border-radius:50%;
   -webkit-border-radius:50%;
 }
+#homePostCommentTxt{
+  min-height: 1em;
+  max-height: 50vh;
+  width: 100%;
+}

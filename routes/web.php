@@ -23,6 +23,15 @@ Route::get('/profiles/{slug}', 'ProfileController@viewProfile');
 Route::get('add', function(){
   return \App\User::find(12)->add_friend(13);
 });
+Route::get('add_friend/{id}', [
+  'uses' => 'FriendshipsController@add_friend',
+  'as'   => 'add_friend'
+]);
+Route::get('accept_friend/{id}', [
+  'uses' => 'FriendshipsController@accept_friend',
+  'as'   => 'accept_friend'
+]);
+
 
 Route::get('accept', function(){
   return \App\User::find(13)->accept_friend(12);

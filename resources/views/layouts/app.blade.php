@@ -10,20 +10,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!-- <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script> -->
+
+
+    <!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script> -->
+
+
     <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
-    <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=lt4hs1j5octreut3946kr2zrr6g1q6tadfsvm28b7cv6gp84"></script> -->
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
-
-
-
-
-
-
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -33,9 +26,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet" type="text/css">
 
+
+
+
+
+
+
+
+
+
 </head>
 <body>
-    <div>
+
+    <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -82,6 +85,7 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -90,9 +94,22 @@
 
         <main class="py-4">
             @yield('content')
+            <div>
+              <notification :id="{{ Auth::id() }}"></notification>
+            </div>
         </main>
 
     </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+ClassicEditor
+    .create( document.querySelector( '#enter-post' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 
 </body>
 
