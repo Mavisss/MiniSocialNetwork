@@ -1,6 +1,5 @@
 <template>
       <div>
-
       </div>
 </template>
 
@@ -16,10 +15,10 @@
             .notification( (notification) => {
                new Noty({
                 type: 'success',
-                layout: 'topLeft',
-                text: 'Someone sent you friend request'
+                layout: 'topRight',
+                text: notification.message
               }).show()
-              console.log(notification)
+              console.log(notification.message)
             })
       }
     }

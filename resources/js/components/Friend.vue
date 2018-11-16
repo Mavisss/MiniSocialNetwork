@@ -18,10 +18,10 @@
 <script>
     export default {
         mounted() {
-             axios.get('/check_relationship_status/'+ this.profile_user_id)
+             this.$http.get('/check_relationship_status/'+ this.profile_user_id)
             .then( (response) => {
               console.log(response)
-              this.status = response.data.status
+              this.status = response.body.status
               this.loading = false
             })
         },
@@ -35,11 +35,11 @@
         methods: {
           add_friend(){
             this.loading = true
-            axios.get('/add_friend/' + this.profile_user_id)
+            this.$http.get('/add_friend/' + this.profile_user_id)
             .then((response)=>{
               console.log(response)
-              console.log(response.data)
-              if (response.data == 1)
+              console.log(response.body)
+              if (response.body == 1)
                 this.status = 'waiting'
                 new Noty({
                   type: 'success',
@@ -54,10 +54,10 @@
 
           accept_friend(){
             this.loading = true
-            axios.get('/accept_friend/'+ this.profile_user_id)
+            this.$http.get('/accept_friend/'+ this.profile_user_id)
             .then((response) => {
               console.log(response)
-              if(response.data == 1)
+              if(response.body == 1)
                 this.status = 'friend'
                 new Noty({
                   type: 'success',

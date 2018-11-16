@@ -18,19 +18,23 @@ window.Vue = require('vue');
 Vue.component('friend', require('./components/Friend.vue'));
 Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('post', require('./components/Post.vue'));
+Vue.component('unread', require('./components/UnreadNots.vue'));
+
 
 Vue.use( CKEditor );
 
+import {store} from './store'
 window.onload = function(){
   const app = new Vue({
       el: '#app',
+      store,
       data: {
         editor: ClassicEditor,
         editorData: '<p>Content of the editor.</p>',
         editorConfig: {
             // The configuration of the editor.
         }
-    }
+     }
   });
 }
 

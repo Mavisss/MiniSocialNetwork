@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NewFriendRequest extends Notification implements ShouldQueue
+class FriendRequestAccepted extends Notification implements ShouldQueue
 {
     use Queueable;
     public $user;
@@ -41,9 +41,9 @@ class NewFriendRequest extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You have received a new friend request from'. $this->user->name)
-                    ->action('View Profile', route('profile', ['slug'=> $this->user->slug]))
-                    ->line('Thank you !');
+                    ->line('This user accepted your friend request.')
+                    ->action('View profile', route('profile', ['slug' => $this->user->slug]))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -56,7 +56,7 @@ class NewFriendRequest extends Notification implements ShouldQueue
     {
         return [
             'name' => $this->user->name,
-            'message' => $this->user->name. ' sent you a friend request!'
+            'message' => $this->user->name . ' accepted your friend request'
         ];
     }
 }

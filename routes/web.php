@@ -21,6 +21,10 @@ Route::get('/profiles/{slug}', [
    'uses' => 'ProfileController@viewProfile',
    'as' => 'profile'
    ]);
+// NOTIFICATION FUNCTIONS
+Route::get('/get_unread', function(){
+   return Auth::user()->unreadNotifications;
+});
 
 // FRIENDS FUNCTION
 Route::get('add', function(){
