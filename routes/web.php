@@ -25,6 +25,10 @@ Route::get('/profiles/{slug}', [
 Route::get('/get_unread', function(){
    return Auth::user()->unreadNotifications;
 });
+Route::get('/mark_as_read/{notId}', [
+   'uses' => 'HomeController@mark_as_read',
+   'as' => 'mark_as_read'
+   ]);
 
 // FRIENDS FUNCTION
 Route::get('add', function(){

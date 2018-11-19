@@ -37,4 +37,9 @@ class HomeController extends Controller
           'allposts' => $allposts,
         ]);
     }
+
+    public function mark_as_read($notId){
+      $user = Auth::user();
+      $user->unreadNotifications->where('id', $notId)->markAsRead();
+   }
 }

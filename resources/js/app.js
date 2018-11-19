@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+import VueRouter from 'vue-router';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20,10 +20,12 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('post', require('./components/Post.vue'));
 Vue.component('unread', require('./components/UnreadNots.vue'));
 
-
 Vue.use( CKEditor );
+Vue.use(VueRouter);
 
 import {store} from './store'
+import {routes} from './routes'
+
 window.onload = function(){
   const app = new Vue({
       el: '#app',
