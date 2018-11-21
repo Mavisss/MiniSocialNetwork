@@ -37,4 +37,12 @@ class HomeController extends Controller
           'allposts' => $allposts,
         ]);
     }
+    public function mark_as_read()
+    {
+        $notifications = Auth::user()->unreadNotifications;
+        foreach ($notifications as $notification) {
+            $notification->markAsRead();
+        }
+
+    }
 }

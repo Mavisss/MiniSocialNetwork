@@ -7,8 +7,9 @@
          </button>
          <div v-on:click="mark_as_read" class="dropdown-menu">
             <ul>
-               <li v-for="message in messages">{{message}}</li>
-
+               <li style="list-style-type:none" v-for="message in messages">{{message}} 
+                  <i style="height: 5px; width=5px;" class="fas fa-circle fa-xs"></i>
+               </li>
             </ul>
          </div>
       </div>
@@ -37,7 +38,7 @@ export default {
                })
          },
          mark_as_read(){
-
+            
          }
    },
    computed: {
